@@ -14,7 +14,7 @@ class FullPost extends Component {
             return;
         }
         if (this.props.postId) {
-            axios.get(`https://jsonplaceholder.typicode.com/posts/${this.props.postId}`)
+            axios.get(`/posts/${this.props.postId}`)
                 .then((response) => {
                     this.setState({
                         loadedPost: response.data
