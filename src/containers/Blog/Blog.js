@@ -4,7 +4,7 @@ import NewPost from '../Blog/NewPost/NewPost';
 import Posts from '../Blog/Posts/Posts';
 import './Blog.css';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 class Blog extends Component {
 
@@ -20,8 +20,8 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/new-post">New</a></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/new-post">New</Link></li>
                         </ul>
                     </nav>
                 </header>
