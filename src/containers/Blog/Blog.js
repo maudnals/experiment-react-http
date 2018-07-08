@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Post from '../../components/Post/Post';
 import FullPost from '../Blog/FullPost/FullPost';
 import NewPost from '../Blog/NewPost/NewPost';
+import Posts from '../Blog/Posts/Posts';
 import './Blog.css';
 import axios from 'axios';
 
@@ -13,70 +13,26 @@ class Blog extends Component {
         error: false
     }
 
-    componentDidMount() {
-        axios.get('/posts')
-            .then((response) => {
-                const posts = response.data.slice(0, 10)
-                    .map(p => {
-                        return {
-                            ...p,
-                            author: "george"
-                        }
-                    });
-                this.setState({
-                    posts: posts,
-                    error: false
-                });
-            })
-            .catch((error) => {
-                this.setState({
-                    error: true
-                });
-            });
-    }
-
-    selectPostHandler = (postId) => {
-        this.setState({
-            selectedPostId: postId
-        });
-    }
-
     render() {
-
-        const posts =
-            this.state.error ?
-                <p>Sorry, something went wrong</p>
-                :
-                this.state.posts.map(p => {
-                    return (<Post
-                        key={p.id}
-                        author={p.author}
-                        title={`${p.title.substring(0, 5)}...`}
-                        clicked={this.selectPostHandler.bind(this, p.id)} />);
-                });
         return (
             <div>
                 <header>
                     <nav>
                         <ul>
-                            <li>
-                                <a href="/">Home</a>
-                            </li>
-                            <li>
-                                <a href="/new-post">New</a>
-                            </li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/new-post">New</a></li>
                         </ul>
                     </nav>
                 </header>
-                <section className="Posts">
-                    {posts}
-                </section>
                 <section>
+                    <Posts/>
+                </section>
+                {/* <section>
                     <FullPost postId={this.state.selectedPostId} />
-                </section>
-                <section>
+                </section> */}
+                {/* <section>
                     <NewPost />
-                </section>
+                </section> */}
             </div>
         );
     }
