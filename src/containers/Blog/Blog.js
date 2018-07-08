@@ -4,6 +4,7 @@ import NewPost from '../Blog/NewPost/NewPost';
 import Posts from '../Blog/Posts/Posts';
 import './Blog.css';
 import axios from 'axios';
+import { Route } from 'react-router-dom';
 
 class Blog extends Component {
 
@@ -24,9 +25,14 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <section>
+                {/* <Route path="/" exact render={() => { return <h1>Home!</h1>;}}/>
+                <Route path="/" exact render={() => { return <h1>Home....</h1>;}}/> */}
+                <Route path="/" exact component={Posts}/>
+                <Route path="/new-post" component={NewPost}/>
+            
+                {/* <section>
                     <Posts/>
-                </section>
+                </section> */}
                 {/* <section>
                     <FullPost postId={this.state.selectedPostId} />
                 </section> */}
