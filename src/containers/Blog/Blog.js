@@ -4,7 +4,7 @@ import NewPost from '../Blog/NewPost/NewPost';
 import Posts from '../Blog/Posts/Posts';
 import './Blog.css';
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 class Blog extends Component {
 
@@ -20,15 +20,15 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/new-post">New</Link></li>
+                            <li><NavLink to="/" exact>Home</NavLink></li>
+                            <li><NavLink to="/new-post">New</NavLink></li>
                         </ul>
                     </nav>
                 </header>
                 {/* <Route path="/" exact render={() => { return <h1>Home!</h1>;}}/>
                 <Route path="/" exact render={() => { return <h1>Home....</h1>;}}/> */}
                 <Route path="/" exact component={Posts}/>
-                <Route path="/new-post" component={NewPost}/>
+                <Route path="/new-post" exact component={NewPost}/>
             
                 {/* <section>
                     <Posts/>
