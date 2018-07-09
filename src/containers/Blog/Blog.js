@@ -3,8 +3,7 @@ import FullPost from '../Blog/FullPost/FullPost';
 import NewPost from '../Blog/NewPost/NewPost';
 import Posts from '../Blog/Posts/Posts';
 import './Blog.css';
-import axios from 'axios';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 class Blog extends Component {
 
@@ -27,9 +26,11 @@ class Blog extends Component {
                 </header>
                 {/* <Route path="/" exact render={() => { return <h1>Home!</h1>;}}/>
                 <Route path="/" exact render={() => { return <h1>Home....</h1>;}}/> */}
-                <Route path="/" exact component={Posts}/>
-                <Route path="/new-post" exact component={NewPost}/>
-            
+                <Switch>
+                    <Route path="/" exact component={Posts} />
+                    <Route path="/new-post" exact component={NewPost} />
+                    <Route path="/:id" exact component={FullPost} />
+                </Switch>
                 {/* <section>
                     <Posts/>
                 </section> */}
